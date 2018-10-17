@@ -1,3 +1,4 @@
+""" Register Blueprints and our routes """
 from flask import Blueprint
 from flask_restful import Api
 
