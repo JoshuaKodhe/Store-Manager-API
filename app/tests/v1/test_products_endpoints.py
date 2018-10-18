@@ -23,5 +23,4 @@ class TestProductsEndpoint(unittest.TestCase):
 
     def test_get_all_products_method(self):
         get_all_products = self.client().get(BASE_URL)
-        data = json.loads(get_all_products.get_data())
         self.assertEqual(get_all_products.status_code, 200)
