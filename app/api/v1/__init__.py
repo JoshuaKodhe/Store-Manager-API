@@ -11,4 +11,3 @@ API = Api(VERSION_1)
 
 API.add_resource(ProductListEndpoint, '/products')
 API.add_resource(ProductEndpoint, '/products', '/products/<int:productId>')
-git 
