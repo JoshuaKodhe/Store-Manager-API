@@ -30,4 +30,7 @@ class SaleRecordModel:
 
     def retrieve_single_records(self, saleId):
         """ Method to get one sale record by the sale_record_id"""
-        pass
+        for product_item in SaleRecordModel.sales_list:
+            if product_item['sale_id'] == saleId:
+                return product_item
+        return f"Sale record of ID {saleId} doesn't exist"
