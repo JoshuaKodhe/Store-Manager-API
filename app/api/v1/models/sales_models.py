@@ -14,7 +14,15 @@ class SaleRecordModel:
 
     def save_record(self):
         """Method to save a sale record"""
-        pass
+        sale_record = dict(sale_id=self.sale_id,
+                           sale_attendant=self.sale_attendant,
+                           unit_price=self.unit_price,
+                           product_quantity=self.product_quantity,
+                           category=self.category,
+                           total_price=(self.product_quantity*self.unit_price)
+                           )
+        SaleRecordModel.sales_list.append(sale_record)
+        return sale_record
 
     def retrieve_records(self):
         """ Method to get all  sale records"""
