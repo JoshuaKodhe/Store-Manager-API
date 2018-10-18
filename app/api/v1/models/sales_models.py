@@ -26,7 +26,7 @@ class SaleRecordModel:
 
     def retrieve_records(self):
         """ Method to get all  sale records"""
-        pass
+        return SaleRecordModel.sales_list
 
     def retrieve_single_records(self, saleId):
         """ Method to get one sale record by the sale_record_id"""
