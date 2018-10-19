@@ -37,3 +37,8 @@ class TestSalesEndpoints(unittest.TestCase):
         data = json.loads(response.get_data())
         single_sale_record = self.client().get(SINGLE_SALE_URL.format(data['sale record']['sale_id']))
         self.assertEqual(single_sale_record.status_code, 200)
+
+    def test_get_all_sale_records_method(self):
+        """ Test for getting all products """
+        get_all_sale_records = self.client().get(BASE_URL)
+        self.assertEqual(get_all_sale_records.status_code, 200)
