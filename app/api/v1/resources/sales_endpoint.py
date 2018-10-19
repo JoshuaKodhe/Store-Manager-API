@@ -24,8 +24,10 @@ class SalesRecordEndpoint(Resource):
 
         return {"sale record": added_sale_record}, 201
 
-    def get(self):
-        pass
+    def get(self, saleId):
+        """ Get a single sale_record"""
+        sale_record = SaleRecordModel.retrieve_single_records(self, saleId)
+        return sale_record
 
 
 class SalesRecordsListEndpoint(Resource):
