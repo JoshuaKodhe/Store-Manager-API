@@ -13,6 +13,7 @@ class TestSalesEndpoints(unittest.TestCase):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
         self.sale_record = {"sale_attendant": "Kay Jay",
+                            "product_name": "Chair",
                             "unit_price": 2000,
                             "product_quantity": 2,
                             "category": "Furniture",

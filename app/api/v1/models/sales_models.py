@@ -5,9 +5,10 @@ class SaleRecordModel:
     """ Class the defines how our Sale records will look """
     sales_list = []
 
-    def __init__(self, sold_by, unit_price, quantity, category):
+    def __init__(self, sold_by, name, unit_price, quantity, category):
         self.sale_id = len(self.sales_list)+1
         self.sale_attendant = sold_by
+        self.product_name = name
         self.unit_price = unit_price
         self.product_quantity = quantity
         self.category = category
@@ -17,6 +18,7 @@ class SaleRecordModel:
         sale_record = dict(sale_id=self.sale_id,
                            sale_attendant=self.sale_attendant,
                            unit_price=self.unit_price,
+                           product_name=self.product_name,
                            product_quantity=self.product_quantity,
                            category=self.category,
                            total_price=(self.product_quantity*self.unit_price)
