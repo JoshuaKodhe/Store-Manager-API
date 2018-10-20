@@ -1,4 +1,5 @@
 """User class"""
+from passlib.hash import pbkdf2_sha256 as sha256
 
 
 class User:
@@ -26,3 +27,11 @@ class User:
             if user['email'] == email:
                 return user
         return f"User of ID {email} doesn't exist"
+
+    @staticmethod
+    def generate_hash(password):
+        return sha256.hash(password)
+
+    @staticmethod
+    def verify_hash(password, pass_hash):
+        return sha256.verify(password, pass_hash)
