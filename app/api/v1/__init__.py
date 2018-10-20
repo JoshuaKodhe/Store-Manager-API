@@ -9,7 +9,8 @@ from app.api.v1.resources.products_endpoints import (ProductEndpoint,
 from app.api.v1.resources.sales_endpoint import (SalesRecordEndpoint,
                                                  SalesRecordsListEndpoint)
 
-from app.api.v1.resources.auth_enpoints import UserRegistrationEndpoint
+from app.api.v1.resources.auth_enpoints import (UserRegistrationEndpoint,
+                                                UserLoginEndpoint)
 
 VERSION_1 = Blueprint('API', __name__, url_prefix="/api/v1")
 API = Api(VERSION_1)
@@ -21,3 +22,4 @@ API.add_resource(SalesRecordsListEndpoint, '/sales')
 API.add_resource(SalesRecordEndpoint, '/sales', '/sales/<int:saleId>')
 
 API.add_resource(UserRegistrationEndpoint, '/register')
+API.add_resource(UserLoginEndpoint, '/login')
