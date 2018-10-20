@@ -1,0 +1,24 @@
+import unittest
+from flask import json
+from app import create_app
+
+REGISTER_URL = '/api/v1/register'
+LOGIN_URL = 'api/v1/login'
+
+
+class TestAuthEndPoints(unittest.TestCase):
+    def setUp(self):
+        self.app = create_app('testing')
+        self.client = self.app.test_client()
+        self.register_user = {"email": "testuser@gmail.com",
+                              "password": "asdfg",
+                              }
+        self.log_user = {"email": "testuser@gmail.com",
+                         "password": "asdfg",
+                         }
+
+    def test_registration(self):
+        response = self.client.post(REGISTER_URL,
+                                    data=json.dumps(self.register_user),
+                                    content_type='application/json')
+        self.assertEqual(response.status_code, 201)
