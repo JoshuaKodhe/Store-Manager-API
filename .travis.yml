@@ -4,6 +4,8 @@ python:
 install:
   pip install -r requirements.txt
   pip install flask-jwt-extended
+env:
+    SECRET_KEY="\xa5%t\x"
 script:
   pytest --cov=app
 after_success:
