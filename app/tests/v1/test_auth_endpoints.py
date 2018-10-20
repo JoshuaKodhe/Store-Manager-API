@@ -13,12 +13,14 @@ class TestAuthEndPoints(unittest.TestCase):
         self.register_user = {"email": "testuser@gmail.com",
                               "password": "asdfg",
                               }
-        self.log_user = {"email": "testuser@gmail.com",
-                         "password": "asdfg",
-                         }
+        self.login_user = {"email": "testuser@gmail.com",
+                           "password": "asdfg",
+                           }
 
     def test_registration(self):
         response = self.client.post(REGISTER_URL,
                                     data=json.dumps(self.register_user),
                                     content_type='application/json')
+        data = json.loads(response.data.decode())
+        self.assertTrue(data['access_token'])
         self.assertEqual(response.status_code, 201)
