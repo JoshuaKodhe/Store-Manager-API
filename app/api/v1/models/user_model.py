@@ -12,7 +12,12 @@ class User:
 
     def save_user(self):
         """ save a new user """
-        pass
+        user = dict(user_id=self.user_id,
+                    username=self.username,
+                    password=self.password)
+
+        User.users_list.append(user)
+        return user
 
     def single_user(self, username):
         """ Method to get a user"""
