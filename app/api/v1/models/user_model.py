@@ -19,6 +19,10 @@ class User:
         User.users_list.append(user)
         return user
 
-    def single_user(self, username):
+    @classmethod
+    def fetch_single_user(cls, username):
         """ Method to get a user"""
-        pass
+        for user in User.users_list:
+            if user['username'] == username:
+                return user
+        return f"User of ID {username} doesn't exist"
