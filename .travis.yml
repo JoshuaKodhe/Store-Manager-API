@@ -7,7 +7,5 @@ env:
     SECRET_KEY="\xa5%t\x"
 script:
   pytest --cov=app
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 after_success:
   coveralls
