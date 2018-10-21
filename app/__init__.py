@@ -7,7 +7,7 @@ from instance.config import APP_CONFIG
 JWT = JWTManager()
 
 
-def create_app(config_name="development"):
+def create_app(config_name):
     """ Registering app confingurations """
     app = Flask(__name__)
     app.config.from_object(APP_CONFIG[config_name])
