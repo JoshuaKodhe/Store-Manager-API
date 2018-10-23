@@ -21,5 +21,5 @@ API.add_resource(ProductEndpoint, '/products', '/products/<int:productId>')
 API.add_resource(SalesRecordsListEndpoint, '/sales')
 API.add_resource(SalesRecordEndpoint, '/sales', '/sales/<int:saleId>')
 
-API.add_resource(UserRegistrationEndpoint, '/register')
-API.add_resource(UserLoginEndpoint, '/login')
+API.add_resource(UserRegistrationEndpoint, '/auth/register')
+API.add_resource(UserLoginEndpoint, '/auth/login')

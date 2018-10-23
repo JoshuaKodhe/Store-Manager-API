@@ -71,5 +71,5 @@ GET /sales| /questions | Fetch all sale records
 GET /sales/<saleId> | Fetch a single sale record
 POST /products | Create a product
 POST /sales | Create a sale order
-POST /register| Create a user
-POST /login | Login a user
+POST /auth/register| Create a user
+POST /auth/login | Login a user
