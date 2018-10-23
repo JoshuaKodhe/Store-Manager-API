@@ -1,11 +1,12 @@
 class Product:
     product_list = []
 
-    def __init__(self, name, description, quantity, category):
+    def __init__(self, name, description, quantity, price, category):
         self.product_id = len(self.product_list)+1
         self.product_name = name
         self.product_description = description
         self.product_quantity = quantity
+        self.unity_price = price
         self.category = category
 
     def save_product(self):
@@ -13,6 +14,7 @@ class Product:
                        product_name=self.product_name,
                        product_description=self.product_description,
                        product_quantity=self.product_quantity,
+                       unit_price=self.unity_price,
                        category=self.category
                        )
         Product.product_list.append(product)

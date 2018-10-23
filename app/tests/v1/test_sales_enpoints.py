@@ -5,7 +5,7 @@ from app import create_app
 
 BASE_URL = '/api/v1/sales'
 SINGLE_SALE_URL = '/api/v1/sales/{}'
-LOGIN_URL = '/api/v1/login'
+LOGIN_URL = '/api/v1/auth/login'
 
 
 class TestSalesEndpoints(unittest.TestCase):
