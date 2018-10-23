@@ -29,7 +29,8 @@ class TestSalesEndpoints(unittest.TestCase):
         response = self.client().post(LOGIN_URL,
                                       data=json.dumps(self.login_user),
                                       content_type='application/json')
-        access_token = json.loads(response.get_data())["access_token"]
+
+        access_token = json.loads(response.data.decode())["access_token"]
         return access_token
 
     def test_post_single_sale_record(self):
@@ -58,5 +59,5 @@ class TestSalesEndpoints(unittest.TestCase):
         """ Test for getting all products """
         get_all_sale_records = self.client().get(BASE_URL,
                                                  headers=dict(Authorization="Bearer "+self.login()),
-                                               content_type="application/json")
+                                                 content_type="application/json")
         self.assertEqual(get_all_sale_records.status_code, 200)
