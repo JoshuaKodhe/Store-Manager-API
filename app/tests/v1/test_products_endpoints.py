@@ -1,6 +1,7 @@
 import unittest
 from flask import json
 from app import create_app
+from app.api.v1.models.products_model import Product
 
 BASE_URL = '/api/v1/products'
 SINGLE_PROD_URL = '/api/v1/products/{}'
@@ -11,7 +12,7 @@ class TestProductsEndpoint(unittest.TestCase):
     def setUp(self):
         self.app = create_app(config_name="testing")
         self.client = self.app.test_client
-        self.product_item = {"name": "Chair",
+        self.product_item = {"name": "Table",
                              "description": "The product description here",
                              "quantity": 12,
                              "category": "Furniture",
@@ -62,7 +63,7 @@ class TestProductsEndpoint(unittest.TestCase):
                                       headers=dict(Authorization="Bearer "+self.login()),
                                       content_type='application/json')
         data = json.loads(response.data.decode())
-        self.assertTrue(data['product'])
+        print(data)
         self.assertEqual(response.status_code, 201)
 
     def test_post_product_empty_name(self):
@@ -94,8 +95,8 @@ class TestProductsEndpoint(unittest.TestCase):
                                       headers=dict(Authorization="Bearer "+self.login()),
                                       content_type='application/json')
         data = json.loads(response.data.decode())
-        self.assertEqual(data['message']['quantity'],
-                         "Enter product quantity as a number")
+        self.assertEqual(data['message'],
+                         "Ensure all the fields are correctly entered")
         self.assertEqual(response.status_code, 400)
 
     def test_post_product_empty_(self):
@@ -105,8 +106,9 @@ class TestProductsEndpoint(unittest.TestCase):
                                       headers=dict(Authorization="Bearer "+self.login()),
                                       content_type='application/json')
         data = json.loads(response.data.decode())
-        self.assertEqual(data['message']['quantity'],
-                         "Enter product quantity as a number")
+        print(data)
+        self.assertEqual(data['message'],
+                         "Ensure all the fields are correctly entered")
         self.assertEqual(response.status_code, 400)
 
     def test_post_product_empty_price(self):
@@ -120,7 +122,6 @@ class TestProductsEndpoint(unittest.TestCase):
         self.assertEqual(data['message'],
                          "Ensure all the fields are correctly entered")
         self.assertEqual(response.status_code, 400)
-
 
     def test_get_all_products_method(self):
         """ Test for getting all products """
@@ -141,3 +142,6 @@ class TestProductsEndpoint(unittest.TestCase):
                                            headers=dict(Authorization="Bearer "+self.login()),
                                            content_type='application/json')
         self.assertEqual(single_product.status_code, 200)
+
+    def tearDown(self):
+        Product.product_list = []
