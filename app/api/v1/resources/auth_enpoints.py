@@ -1,3 +1,4 @@
+import datetime
 from flask_restful import Resource
 from flask import request
 from flask_jwt_extended import create_access_token
@@ -55,7 +56,8 @@ class UserLoginEndpoint(Resource):
                 current_user = User.fetch_single_user(email)
                 if User.verify_hash(password,
                                     current_user["password"]):
-                    access_token = create_access_token(identity=email)
+                    access_token = create_access_token(identity=email,
+                                                       expires_delta=datetime.timedelta(hours=24))
                     return{'mesage': f'Logged in as {current_user["email"]}',
                            'access_token': access_token,
                            }, 200
