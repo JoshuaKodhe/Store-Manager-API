@@ -1,5 +1,4 @@
 """User class"""
-from flask import abort
 from passlib.hash import pbkdf2_sha256 as sha256
 
 

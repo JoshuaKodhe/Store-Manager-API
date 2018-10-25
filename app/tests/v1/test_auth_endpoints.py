@@ -12,12 +12,15 @@ class TestAuthEndPoints(unittest.TestCase):
         self.client = self.app.test_client()
         self.valid_register_user = {"email": "testuser@gmail.com",
                                     "password": "asdfg",
+                                    "username": "testU"
                                     }
         self.blank_email = {"email": "",
                             "password": "asdfg",
+                            "username": "testU"
                             }
         self.blank_password = {"email": "testuser@gmail.com",
                                "password": "",
+                               "username": "testU"
                                }
         self.login_user = {"email": "testuser@gmail.com",
                            "password": "asdfg",
@@ -44,7 +47,7 @@ class TestAuthEndPoints(unittest.TestCase):
                                     content_type='application/json')
         data = json.loads(response.data.decode())
         self.assertEqual(data['message'],
-                         "Please enter an email address and password")
+                         "Please enter a valid email")
         self.assertEqual(response.status_code, 400)
 
     def test_empty_password_register(self):
@@ -67,7 +70,7 @@ class TestAuthEndPoints(unittest.TestCase):
                                     content_type='application/json')
         data = json.loads(response.data.decode())
 
-        self.assertEqual(data['message'], "Enter email and password to login")
+        self.assertEqual(data['message'], "The field username is not a valid field")
         self.assertEqual(response.status_code, 400)
 
     def test_empty_password_login(self):
@@ -75,7 +78,7 @@ class TestAuthEndPoints(unittest.TestCase):
                                     data=json.dumps(self.blank_password),
                                     content_type='application/json')
         data = json.loads(response.data.decode())
-        self.assertEqual(data['message'], "Enter email and password to login")
+        self.assertEqual(data['message'], "The field username is not a valid field")
         self.assertEqual(response.status_code, 400)
 
     def test_wrong_email_login(self):

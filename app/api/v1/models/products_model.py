@@ -27,8 +27,20 @@ class Product:
         for product_item in Product.product_list:
             if product_item['product_id'] == productId:
                 return product_item
+        return False
 
     def retrieve_single_products_by_name(self, productName):
         for product_item in Product.product_list:
             if product_item['product_name'] == productName:
                 return product_item
+
+    def update_product(self, name, category, description, quantity, price):
+        product_item = Product.retrieve_single_products_by_name(self, name)
+        if product_item['product_name'] == name:
+            product_item["product_name"] = name
+            product_item["category"] = category
+            product_item["product_description"] = description
+            product_item["product_quantity"] = quantity
+            product_item["unit_price"] = price
+
+            return product_item

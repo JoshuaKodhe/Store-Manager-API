@@ -62,8 +62,6 @@ class TestProductsEndpoint(unittest.TestCase):
                                       data=json.dumps(self.product_item),
                                       headers=dict(Authorization="Bearer "+self.login()),
                                       content_type='application/json')
-        data = json.loads(response.data.decode())
-        print(data)
         self.assertEqual(response.status_code, 201)
 
     def test_post_product_empty_name(self):
