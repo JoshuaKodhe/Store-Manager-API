@@ -1,6 +1,7 @@
 # Store Manager
 
 [![Build Status](https://travis-ci.com/JoshuaKodhe/Store-Manager-API.svg?branch=ch-deploy-to-heroku-161363243)](https://travis-ci.com/JoshuaKodhe/Store-Manager-API) [![Maintainability](https://api.codeclimate.com/v1/badges/7493875336dcd8ac2498/maintainability)](https://codeclimate.com/github/JoshuaKodhe/Store-Manager-API/maintainability) [![Coverage Status](https://coveralls.io/repos/github/JoshuaKodhe/Store-Manager-API/badge.svg?branch=ch-deploy-to-heroku-161363243)](https://coveralls.io/github/JoshuaKodhe/Store-Manager-API?branch=ch-deploy-to-heroku-161363243)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/961a70dfbce934559849)
 
 ## Introduction
 
