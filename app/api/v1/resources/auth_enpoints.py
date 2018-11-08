@@ -18,3 +18,14 @@ class UserRegistrationEndpoint(Resource):
         access_token = create_access_token(identity=data["email"])
         return {"message": f'User {data["email"]} was created',
                 "access_token": access_token}, 201
+
+
+class UserLoginEndpoint(Resource):
+    def post(self):
+        data = parser.parse_args()
+        current_user = User.fetch_single_user(data['email'])
+        if User.verify_hash(data['password'], current_user["password"]):
+            access_token = create_access_token(identity=data["email"])
+            return{'mesage': f'Logged in as {current_user["email"]}',
+                   'access_token': access_token,
+                   }, 200

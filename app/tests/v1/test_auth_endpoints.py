@@ -3,7 +3,7 @@ from flask import json
 from app import create_app
 
 REGISTER_URL = '/api/v1/register'
-LOGIN_URL = 'api/v1/login'
+LOGIN_URL = '/api/v1/login'
 
 
 class TestAuthEndPoints(unittest.TestCase):
@@ -24,3 +24,11 @@ class TestAuthEndPoints(unittest.TestCase):
         data = json.loads(response.data.decode())
         self.assertTrue(data['access_token'])
         self.assertEqual(response.status_code, 201)
+
+    def test_user_login(self):
+        response = self.client.post(LOGIN_URL,
+                                    data=json.dumps(self.login_user),
+                                    content_type='application/json')
+        data = json.loads(response.data.decode())
+        self.assertTrue(data["access_token"])
+        self.assertEqual(response.status_code, 200)
