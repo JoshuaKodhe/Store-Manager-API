@@ -26,7 +26,7 @@ class User:
         for user in User.users_list:
             if user['email'] == email:
                 return user
-        return f"User of ID {email} doesn't exist"
+        return False
 
     @staticmethod
     def generate_hash(password):

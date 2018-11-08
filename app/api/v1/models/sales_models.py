@@ -10,7 +10,7 @@ class SaleRecordModel:
         self.sale_attendant = sold_by
         self.product_name = name
         self.unit_price = unit_price
-        self.product_quantity = quantity
+        self.quantity_sold = quantity
         self.category = category
 
     def save_record(self):
@@ -19,9 +19,9 @@ class SaleRecordModel:
                            sale_attendant=self.sale_attendant,
                            unit_price=self.unit_price,
                            product_name=self.product_name,
-                           product_quantity=self.product_quantity,
+                           quantity_sold=self.quantity_sold,
                            category=self.category,
-                           total_price=(self.product_quantity*self.unit_price)
+                           total_price=(self.quantity_sold*self.unit_price)
                            )
         SaleRecordModel.sales_list.append(sale_record)
         return sale_record
@@ -35,4 +35,3 @@ class SaleRecordModel:
         for product_item in SaleRecordModel.sales_list:
             if product_item['sale_id'] == saleId:
                 return product_item
-        return f"Sale record of ID {saleId} doesn't exist"
