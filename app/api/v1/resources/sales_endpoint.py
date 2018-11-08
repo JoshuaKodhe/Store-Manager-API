@@ -32,4 +32,5 @@ class SalesRecordEndpoint(Resource):
 
 class SalesRecordsListEndpoint(Resource):
     def get(self):
-        pass
+        sale_records = SaleRecordModel.retrieve_records(self)
+        return {"sale_records": sale_records}
