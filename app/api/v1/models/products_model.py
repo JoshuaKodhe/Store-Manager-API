@@ -15,14 +15,14 @@ class Product:
                        product_quantity=self.product_quantity,
                        category=self.category
                        )
-        self.product_list.append(product)
+        Product.product_list.append(product)
         return product
 
     def retrieve_products(self):
-        return self.product_list
+        return Product.product_list
 
     def retrieve_single_products(self, productId):
-        for product_item in self.product_list:
+        for product_item in Product.product_list:
             if product_item['product_id'] == productId:
                 return product_item
         return f"Product of ID {productId} doesn't exist"

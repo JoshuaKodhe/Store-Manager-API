@@ -17,3 +17,9 @@ class ProductEndpoint(Resource):
         added_product = new_product.save_product()
 
         return {"Product": added_product}, 201
+
+
+class ProductListEndpoint(Resource):
+    def get(self):
+        all_products = Product.retrieve_products(self)
+        return {"Products": all_products}
