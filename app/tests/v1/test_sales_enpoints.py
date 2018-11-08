@@ -4,7 +4,7 @@ from app import create_app
 
 
 BASE_URL = '/api/v1/sales'
-SINGLE_PROD_URL = '/api/v1/sales/{}'
+SINGLE_SALE_URL = '/api/v1/sales/{}'
 
 
 class TestSalesEndpoints(unittest.TestCase):
@@ -27,3 +27,13 @@ class TestSalesEndpoints(unittest.TestCase):
                                       content_type="application/json")
 
         self.assertEqual(response.status_code, 201)
+
+    def test_get_single_sale_record(self):
+        """ Test get a sale record """
+        response = self.client().post(BASE_URL,
+                                      data=json.dumps(self.sale_record),
+                                      content_type="application/json")
+
+        data = json.loads(response.get_data())
+        single_sale_record = self.client().get(SINGLE_SALE_URL.format(data['sale record']['sale_id']))
+        self.assertEqual(single_sale_record.status_code, 200)
