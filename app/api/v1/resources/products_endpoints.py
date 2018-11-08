@@ -18,6 +18,10 @@ class ProductEndpoint(Resource):
 
         return {"Product": added_product}, 201
 
+    def get(self, productId):
+        single_product = Product.retrieve_single_products(self, productId)
+        return single_product
+
 
 class ProductListEndpoint(Resource):
     def get(self):
